@@ -1,3 +1,6 @@
+import { Menu } from "lucide-react";
+import Link from "next/link";
+
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
   {
@@ -21,9 +24,30 @@ const navItems = [
     href: "#contact",
   },
 ];
+interface Prop {
+  label: string;
+  href: string;
+}
 
-const Header = () => {
-  return <div>Header</div>;
+const Header = ({}: Prop) => {
+  return (
+    <div>
+      <header>
+        <div className="container !max-w-full">
+          <div className="flex justify-between h-20 items-center">
+            <div>
+              <Link href="/">
+                <span className="text-xl font-bold">Tiako Loic</span>
+              </Link>
+            </div>
+            <div>
+              <Menu />
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  );
 };
 
 export default Header;

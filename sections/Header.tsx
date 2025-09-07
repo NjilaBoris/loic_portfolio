@@ -37,7 +37,7 @@ const Header = ({}: Prop) => {
           <div className="flex justify-between h-20 items-center">
             <div>
               <Link href="/">
-                <span className="text-xl font-bold">Tiako Loic</span>
+                <span className="text-xl font-semibold">Tiako Loic</span>
               </Link>
             </div>
             <div>

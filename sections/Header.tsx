@@ -47,7 +47,7 @@ const Header = ({}: Prop) => {
               <div className="size-11 border border-stone-400 bg-stone-200 rounded-full inline-flex items-center justify-center">
                 <Menu />
               </div>
-              <Button className=" hidden md:block">Contact Me</Button>
+              <Button className="!hidden !md:block">Contact Me</Button>
             </div>
           </div>
         </div>

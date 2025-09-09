@@ -1,8 +1,9 @@
 import image1 from "@/public/images/testimonial-1.jpg";
 import image2 from "@/public/images/testimonial-2.jpg";
 import image3 from "@/public/images/testimonial-3.jpg";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
   {
     name: "Sarah Chen",
@@ -34,7 +35,57 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  return <div>Testimonials</div>;
+  const testimonialsIndex = 0;
+  return (
+    <section className="py-24 md:py-32 lg:py-40">
+      <h2 className="text-4xl flex md:text-7xl lg:text-8xl flex-col overflow-clip">
+        <span className="whitespace-nowrap">
+          Some nice words from my past clients
+        </span>
+        <span className="whitespace-nowrap self-end text-orange-500">
+          Some nice words from my past clients
+        </span>
+      </h2>
+      <div className="container">
+        <div className="mt-20 pl-5">
+          {testimonials.map(
+            ({ name, company, role, quote, image, imagePositionY }, index) =>
+              index === testimonialsIndex && (
+                <div
+                  key={name}
+                  className="grid md:grid-cols-5 md:gap-8 lg:gap-16 md:items-center"
+                >
+                  <div className="aspect-square md:col-span-2 md:aspect-[9/16]">
+                    <Image
+                      src={image}
+                      alt="name"
+                      className="size-full object-cover"
+                      style={{ objectPosition: `50% ${imagePositionY * 100}%` }}
+                    />
+                  </div>
+                  <blockquote className="md:col-span-3">
+                    <div className="text-3xl mt-8 md:text-5xl lg:text-6xl md:mt-0">
+                      &ldquo;{quote}&rdquo;
+                    </div>
+                    <cite className="mt-4 not-italic md:mt-8 md:text-lg lg:text-xl text-2xl block">
+                      {name}, {role} at {company}
+                    </cite>
+                  </blockquote>
+                </div>
+              )
+          )}
+        </div>
+        <div className="pl-5 flex gap-4 mt-6 lg:mt-10">
+          <button className="border border-stone-400 size-11 inline-flex items-center justify-center rounded-full">
+            <ArrowLeft />
+          </button>
+          <button className="border border-stone-400 size-11 inline-flex items-center justify-center rounded-full">
+            <ArrowRight />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Testimonials;

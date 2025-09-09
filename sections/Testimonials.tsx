@@ -1,6 +1,6 @@
-import image1 from "/images/testimonial-1.jpg";
-import image2 from "/images/testimonial-2.jpg";
-import image3 from "/images/testimonial-3.jpg";
+import image1 from "@/public/images/testimonial-1.jpg";
+import image2 from "@/public/images/testimonial-2.jpg";
+import image3 from "@/public/images/testimonial-3.jpg";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [

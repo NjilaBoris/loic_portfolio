@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
 @theme {
   --font-Archivo: var(--font-archivo);
   --container: center;
   --container-padding: 1rem;
   --container-padding-md: 2rem;
   --container-padding-lg: 4rem;
+  --color-red-orange-500: color-mix(in srgb, #ef4444 50%, #f97316 50%);
 }

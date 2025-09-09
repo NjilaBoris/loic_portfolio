@@ -55,7 +55,7 @@ const Testimonials = () => {
                   key={name}
                   className="grid md:grid-cols-5 md:gap-8 lg:gap-16 md:items-center"
                 >
-                  <div className="aspect-square md:col-span-2 md:aspect-[9/16]">
+                  <div className="aspect-square md:col-span-2 md:aspect-[9/10]">
                     <Image
                       src={image}
                       alt="name"

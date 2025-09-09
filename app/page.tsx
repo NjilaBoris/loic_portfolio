@@ -1,3 +1,4 @@
+import FAQs from "@/sections/FAQs";
 import Header from "@/sections/Header";
 import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
@@ -13,6 +14,7 @@ const page = () => {
       <Intro />
       <Projects />
       <Testimonials />
+      <FAQs />
     </>
   );
 };

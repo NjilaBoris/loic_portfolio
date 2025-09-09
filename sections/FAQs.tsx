@@ -1,4 +1,5 @@
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+import { Plus } from "lucide-react";
+
 const faqs = [
   {
     question: "How long does it take to build a website?",
@@ -23,7 +24,28 @@ const faqs = [
 ];
 
 const FAQs = () => {
-  return <div>FAQs</div>;
+  return (
+    <section className="py-24 md:py-32 lg:py-40">
+      <div className="container pl-5">
+        <h2 className="text-4xl">FAQs</h2>
+        <div className="mt-10">
+          {faqs.map(({ question, answer }) => (
+            <div
+              key={question}
+              className="border-t border-stone-400 border-dotted py-6"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="text-2xl">{question}</div>
+                <div className="inline-flex items-center justify-center size-11 shrink-0 border border-stone-400 rounded-full">
+                  <Plus />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default FAQs;

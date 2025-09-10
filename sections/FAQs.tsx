@@ -27,15 +27,17 @@ const FAQs = () => {
   return (
     <section className="py-24 md:py-32 lg:py-40">
       <div className="container pl-5">
-        <h2 className="text-4xl">FAQs</h2>
-        <div className="mt-10">
+        <h2 className="text-4xl md:text-7xl lg:text-8xl">FAQs</h2>
+        <div className="mt-10 md:mt-16 lg:mt-20">
           {faqs.map(({ question, answer }) => (
             <div
               key={question}
-              className="border-t border-stone-400 border-dotted py-6"
+              className="border-t border-stone-400 border-dotted py-6 last:border-b md:py-8 lg:py-10"
             >
               <div className="flex items-center justify-between gap-4">
-                <div className="text-2xl">{question}</div>
+                <div className="text-2xl md:text-3xl lg:text-4xl">
+                  {question}
+                </div>
                 <div className="inline-flex items-center justify-center size-11 shrink-0 border border-stone-400 rounded-full">
                   <Plus />
                 </div>

@@ -37,7 +37,7 @@ const testimonials = [
 const Testimonials = () => {
   const testimonialsIndex = 0;
   return (
-    <section className="py-24 md:py-32 lg:py-40">
+    <section className="py-24 md:py-32 lg:py-40" id="testimonials">
       <h2 className="text-4xl flex md:text-7xl lg:text-8xl flex-col overflow-clip">
         <span className="whitespace-nowrap">
           Some nice words from my past clients

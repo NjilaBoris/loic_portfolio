@@ -31,7 +31,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-40 px-5">
+    <section className="py-24 md:py-32 lg:py-40 px-5" id="projects">
       <div className="container ">
         <h1 className="text-4xl md:text-7xl lg:text-8xl">Selected works</h1>
         <div className="mt-10 md:mt-16 lg:mt-20">

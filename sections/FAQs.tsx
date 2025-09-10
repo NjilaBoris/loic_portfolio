@@ -25,7 +25,7 @@ const faqs = [
 
 const FAQs = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-40">
+    <section className="py-24 md:py-32 lg:py-40" id="faqs">
       <div className="container pl-5">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">FAQs</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">

@@ -43,7 +43,6 @@ const Projects = () => {
             >
               <div className="absolute bottom-0 -z-1 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-stone-300" />
               <div className="pr-[1rem] relative">
-                <div className="aspect-video md:hidden"></div>
                 <div
                   className="mt-8 md:mt-0 flex justify-between items-center 
                 md:grid md:[grid-template-columns:1fr_300px_max-content] md:gap-8"

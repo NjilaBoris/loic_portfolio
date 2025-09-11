@@ -1,3 +1,6 @@
+"use client";
+import TextReveal from "@/components/TextReveal";
+
 const Intro = () => {
   return (
     <section
@@ -5,10 +8,12 @@ const Intro = () => {
       id="intro"
     >
       <div className="container">
-        <h2 className="text-4xl md:text-7xl lg:w-[80%] lg:text-[8xl]">
-          Building beautiful websites with clean code and througtful design to
-          help your building grow and stand out online
-        </h2>
+        <TextReveal>
+          <h2 className="text-4xl md:text-7xl lg:w-[80%] lg:text-[8xl]">
+            Building beautiful websites with clean code and througtful design to
+            help your building grow and stand out online
+          </h2>
+        </TextReveal>
       </div>
     </section>
   );

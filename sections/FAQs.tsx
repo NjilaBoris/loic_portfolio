@@ -1,4 +1,6 @@
+"use client";
 import { Plus } from "lucide-react";
+import { useState } from "react";
 
 const faqs = [
   {
@@ -24,13 +26,21 @@ const faqs = [
 ];
 
 const FAQs = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   return (
     <section className="py-24 md:py-32 lg:py-40" id="faqs">
       <div className="container pl-5">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">FAQs</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">
-          {faqs.map(({ question, answer }) => (
+          {faqs.map(({ question, answer }, faqIndex) => (
             <div
+              onClick={() => {
+                if (faqIndex === selectedIndex) {
+                  setSelectedIndex(null);
+                } else {
+                  setSelectedIndex(faqIndex);
+                }
+              }}
               key={question}
               className="border-t border-stone-400 border-dotted py-6 last:border-b md:py-8 lg:py-10"
             >
@@ -42,6 +52,11 @@ const FAQs = () => {
                   <Plus />
                 </div>
               </div>
+              {faqIndex === selectedIndex && (
+                <div>
+                  <p className="text-xl mt-4">{answer}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>

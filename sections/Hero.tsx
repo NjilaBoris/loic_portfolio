@@ -3,27 +3,22 @@
 import heroImage from "@/assets/images/hero-image.jpg";
 import Button from "@/components/Button";
 import Image from "next/image";
-import SplitType from "split-type";
-import { motion, stagger, useAnimate } from "motion/react";
-import { useEffect } from "react";
+
+import { motion, useScroll, useTransform } from "motion/react";
+
 import TextReveal from "@/components/TextReveal";
+import { useRef } from "react";
 
 const Hero = () => {
-  const [titleScope, titleAnimate] = useAnimate();
-  // useEffect(() => {
-  //   new SplitType(titleScope.current, {
-  //     types: "lines,words",
-  //     tagName: "span",
-  //   });
-  //   titleAnimate(
-  //     titleScope.current.querySelectorAll(".word"),
-  //     { transform: "translateY(0%)" },
-  //     { duration: 0.5, delay: stagger(0.2) }
-  //   );
-  // }, [titleScope, titleAnimate]);
+  const scrollingDiv = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollingDiv,
+    offset: ["start end", "end end"],
+  });
+  const width = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
   return (
     <section>
-      <div className="grid md:grid-cols-12 md:h-dvh items-stretch">
+      <div className="grid md:grid-cols-12 md:h-dvh items-stretch sticky top-0">
         <div className="md:col-span-7 flex flex-col justify-center">
           <div className="container !max-w-full px-[2rem]">
             <TextReveal>
@@ -100,8 +95,11 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="md:col-span-5">
-          <div className="mt-20 md:mt-0 md:h-full">
+        <div className="md:col-span-5 relative">
+          <motion.div
+            className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full"
+            style={{ width }}
+          >
             <Image
               src="/images/heroLogo.png"
               alt="Hero"
@@ -109,9 +107,10 @@ const Hero = () => {
               height={500}
               className="size-full object-cover"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
+      <div className="md:h-[200vh]" ref={scrollingDiv} />
     </section>
   );
 };

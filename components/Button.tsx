@@ -12,8 +12,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-red-orange-500 text-white hover:bg-red-orange-500/80 transition-colors ease-in-out duration-70",
-  secondary: "bg-gray-200 text-gray-900",
-  tertiary: " underline h-auto border-transparent px-0",
+  secondary: "bg-gray-200 text-black hover:text-white hover:bg-red-orange-500",
+  tertiary:
+    " underline h-auto border-transparent px-0 after:content-[''] after:h-px after:w-0 after:absolute after:transition-all after-duration-500 after:top-full after:bg-red-orange-500 hover:after:w-[65%]",
 };
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -25,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={clsx(
-        " h-11 px-6 rounded-xl inline-flex gap-4 items-center border border-red-orange-500 uppercase",
+        " h-11 px-6 rounded-xl relative group/button inline-flex transition-colors duration-500 gap-4 items-center border border-red-orange-500 uppercase",
         variantClasses[variant],
         className
       )}

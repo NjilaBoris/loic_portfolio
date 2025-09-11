@@ -9,6 +9,9 @@
   --container-padding-lg: 4rem;
   --color-red-orange-500: color-mix(in srgb, #ef4444 50%, #f97316 50%);
 }
-@utility section {
-  @apply p-24 md:p-32 lg:p-40;
+.line {
+  @apply overflow-clip;
+}
+.word {
+  @apply translate-y-full;
 }

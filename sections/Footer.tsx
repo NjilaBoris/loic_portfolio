@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import TextReveal from "@/components/TextReveal";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -21,9 +22,11 @@ const Footer = () => {
           </div>
           <div className="grid md:grid-cols-3 md:items-center">
             <div className="md:col-span-2">
-              <h2 className="text-4xl mt-8 font-extralight md:text-7xl lg:text-8xl">
-                Enough talk. Let&apos;s make something great together.
-              </h2>
+              <TextReveal>
+                <h2 className="text-4xl mt-8 font-extralight md:text-7xl lg:text-8xl">
+                  Enough talk. Let&apos;s make something great together.
+                </h2>
+              </TextReveal>
               <Button
                 variant="secondary"
                 className="bg-stone-900 text-white mt-8"

@@ -5,18 +5,21 @@ import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
 import Projects from "@/sections/Projects";
 import Testimonials from "@/sections/Testimonials";
+import ReactLenis from "lenis/react";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <Header />
-      <Hero />
-      <Intro />
-      <Projects />
-      <Testimonials />
-      <FAQs />
-      <Footer />
+      <ReactLenis root options={{ duration: 2, smoothWheel: true }}>
+        <Header />
+        <Hero />
+        <Intro />
+        <Projects />
+        <Testimonials />
+        <FAQs />
+        <Footer />
+      </ReactLenis>
     </>
   );
 };

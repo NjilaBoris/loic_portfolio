@@ -1,8 +1,11 @@
+"use client";
 import image1 from "@/public/images/testimonial-1.jpg";
 import image2 from "@/public/images/testimonial-2.jpg";
 import image3 from "@/public/images/testimonial-3.jpg";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useScroll, motion, useTransform } from "motion/react";
 import Image from "next/image";
+import { useRef } from "react";
 
 const testimonials = [
   {
@@ -35,16 +38,29 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const titleRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: titleRef,
+    offset: ["start end", "end end"],
+  });
+  const transformTop = useTransform(scrollYProgress, [0, 1], ["0%", "17%"]);
+  const transformBottom = useTransform(scrollYProgress, [0, 1], ["0%", "-17%"]);
   const testimonialsIndex = 0;
   return (
     <section className="py-24 md:py-32 lg:py-40" id="testimonials">
-      <h2 className="text-4xl flex md:text-7xl lg:text-8xl flex-col overflow-clip">
-        <span className="whitespace-nowrap">
+      <h2
+        className="text-4xl flex md:text-7xl lg:text-8xl flex-col overflow-clip"
+        ref={titleRef}
+      >
+        <motion.span className="whitespace-nowrap" style={{ x: transformTop }}>
           Some nice words from my past clients
-        </span>
-        <span className="whitespace-nowrap self-end text-orange-500">
+        </motion.span>
+        <motion.span
+          className="whitespace-nowrap self-end text-orange-500"
+          style={{ x: transformBottom }}
+        >
           Some nice words from my past clients
-        </span>
+        </motion.span>
       </h2>
       <div className="container">
         <div className="mt-20 pl-5">

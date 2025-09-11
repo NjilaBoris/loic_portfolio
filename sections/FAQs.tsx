@@ -1,5 +1,7 @@
 "use client";
+import clsx from "clsx";
 import { Plus } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 const faqs = [
@@ -42,21 +44,45 @@ const FAQs = () => {
                 }
               }}
               key={question}
-              className="border-t border-stone-400 border-dotted py-6 last:border-b md:py-8 lg:py-10"
+              className="border-t border-stone-400 isolate group/faq border-dotted py-6 relative last:border-b md:py-8 lg:py-10"
             >
-              <div className="flex items-center justify-between gap-4">
+              <div
+                className={clsx(
+                  "absolute h-0 w-full transition-all duration-700  bg-stone-300 -z-10 group-hover/faq:h-full bottom-0 left-0",
+                  faqIndex === selectedIndex && "h-full"
+                )}
+              />
+              <div
+                className={clsx(
+                  "flex items-center justify-between gap-4 group-hover/faq:lg:px-8 transition-all duration-700",
+                  faqIndex === selectedIndex && "lg:px-8"
+                )}
+              >
                 <div className="text-2xl md:text-3xl lg:text-4xl">
                   {question}
                 </div>
-                <div className="inline-flex items-center justify-center size-11 shrink-0 border border-stone-400 rounded-full">
+                <div
+                  className={clsx(
+                    "inline-flex bg-stone-200 items-center transition-transform duration-500 justify-center size-11 shrink-0 border border-stone-400 rounded-full",
+                    faqIndex === selectedIndex && "rotate-45"
+                  )}
+                >
                   <Plus />
                 </div>
               </div>
-              {faqIndex === selectedIndex && (
-                <div>
-                  <p className="text-xl mt-4">{answer}</p>
-                </div>
-              )}
+              <AnimatePresence initial={false} key={faqIndex}>
+                {faqIndex === selectedIndex && (
+                  <motion.div
+                    className="overflow-clip lg:px-8"
+                    initial={{ height: 0 }}
+                    animate={{ height: "auto" }}
+                    exit={{ height: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <p className="text-xl mt-4">{answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>

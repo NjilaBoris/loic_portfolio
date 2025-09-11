@@ -1,11 +1,12 @@
 "use client";
+import Testimonial from "@/components/Testimonial";
 import image1 from "@/public/images/testimonial-1.jpg";
 import image2 from "@/public/images/testimonial-2.jpg";
 import image3 from "@/public/images/testimonial-3.jpg";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useScroll, motion, useTransform } from "motion/react";
-import Image from "next/image";
-import { useRef } from "react";
+import { useScroll, motion, useTransform, AnimatePresence } from "motion/react";
+
+import { useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -13,7 +14,7 @@ const testimonials = [
     company: "Pixel Perfect",
     role: "Head of Design",
     quote:
-      "Alex's expertise in both technical development and design created a beautiful, high-performing website.",
+      "Loic's expertise in both technical development and design created a beautiful, high-performing website.",
     image: image1,
     imagePositionY: 0.2,
   },
@@ -22,7 +23,7 @@ const testimonials = [
     company: "Craft Coffee Co.",
     role: "Founder",
     quote:
-      "Alex transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.",
+      "Loic transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.",
     image: image2,
     imagePositionY: 0.1,
   },
@@ -31,7 +32,7 @@ const testimonials = [
     company: "Studio Minimal",
     role: "Creative Director",
     quote:
-      "The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.",
+      "The collaborative process was amazing. Loic brought lots of fresh perspectives and innovative solutions.",
     image: image3,
     imagePositionY: 0.55,
   },
@@ -45,7 +46,23 @@ const Testimonials = () => {
   });
   const transformTop = useTransform(scrollYProgress, [0, 1], ["0%", "17%"]);
   const transformBottom = useTransform(scrollYProgress, [0, 1], ["0%", "-17%"]);
-  const testimonialsIndex = 0;
+  const [testimonialsIndex, setTestimonialsIndex] = useState(0);
+  const handleClickPrev = () => {
+    setTestimonialsIndex((curr) => {
+      if (curr === 0) {
+        return testimonials.length - 1;
+      }
+      return curr - 1;
+    });
+  };
+  const handleClickNext = () => {
+    setTestimonialsIndex((curr) => {
+      if (curr === testimonials.length - 1) {
+        return 0;
+      }
+      return curr + 1;
+    });
+  };
   return (
     <section className="py-24 md:py-32 lg:py-40" id="testimonials">
       <h2
@@ -64,38 +81,35 @@ const Testimonials = () => {
       </h2>
       <div className="container">
         <div className="mt-20 pl-5">
-          {testimonials.map(
-            ({ name, company, role, quote, image, imagePositionY }, index) =>
-              index === testimonialsIndex && (
-                <div
-                  key={name}
-                  className="grid md:grid-cols-5 md:gap-8 lg:gap-16 md:items-center"
-                >
-                  <div className="aspect-square md:col-span-2 md:aspect-[9/10]">
-                    <Image
-                      src={image}
-                      alt="name"
-                      className="size-full object-cover"
-                      style={{ objectPosition: `50% ${imagePositionY * 100}%` }}
-                    />
-                  </div>
-                  <blockquote className="md:col-span-3">
-                    <div className="text-3xl mt-8 md:text-5xl lg:text-6xl md:mt-0">
-                      &ldquo;{quote}&rdquo;
-                    </div>
-                    <cite className="mt-4 not-italic md:mt-8 md:text-lg lg:text-xl text-2xl block">
-                      {name}, {role} at {company}
-                    </cite>
-                  </blockquote>
-                </div>
-              )
-          )}
+          <AnimatePresence mode="wait" initial={false}>
+            {testimonials.map(
+              ({ name, company, role, quote, image, imagePositionY }, index) =>
+                index === testimonialsIndex && (
+                  <Testimonial
+                    name={name}
+                    company={company}
+                    role={role}
+                    quote={quote}
+                    image={image}
+                    imagePositionY={imagePositionY}
+                    key={name}
+                  />
+                )
+            )}
+          </AnimatePresence>
         </div>
         <div className="pl-5 flex gap-4 mt-6 lg:mt-10">
-          <button className="border border-stone-400 size-11 inline-flex items-center justify-center rounded-full">
+          <button
+            onClick={handleClickPrev}
+            className="border border-stone-400 size-11 inline-flex items-center
+             justify-center rounded-full hover:bg-red-orange-500 hover:text-white hover:border-red-orange-500 transition-all duration-300"
+          >
             <ArrowLeft />
           </button>
-          <button className="border border-stone-400 size-11 inline-flex items-center justify-center rounded-full">
+          <button
+            onClick={handleClickNext}
+            className="border border-stone-400 hover:bg-red-orange-500 hover:text-white hover:border-red-orange-500 transition-all duration-300 size-11 inline-flex items-center justify-center rounded-full"
+          >
             <ArrowRight />
           </button>
         </div>
